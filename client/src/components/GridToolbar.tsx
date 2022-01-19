@@ -10,6 +10,7 @@ import {
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
 import "./gridtoolbar.scss";
+import durationDisplay from "../utils/durationDisplay";
 // import durationDisplay from "../utils/durationDisplay";
 
 const GridToolBar = function () {
@@ -84,19 +85,19 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <input
-          type="number"
-          min={0}
+        <div
+          // type="number"
+          // min={0}
           key={seconds}
-          defaultValue={seconds}
-          onChange={updateSeconds}
-        />
+          // defaultValue={seconds}
+          // onChange={updateSeconds}
+        >
+          {durationDisplay(seconds)}
+        </div>
       </span>
+
       <span>
-        <button type="button">Local</button>
-      </span>
-      <span>
-        <button type="button" style={{ width: "45vw" }}>
+        <button type="button" style={{ width: "85vw" }}>
           GroundBtl(Ground)
         </button>
       </span>
