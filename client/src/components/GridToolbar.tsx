@@ -48,10 +48,15 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <input type="number" />
+        <input type="number" min={0} />
       </span>
       <span>
         <button type="button">Local</button>
+      </span>
+      <span>
+        <button type="button" style={{ width: "45vw" }}>
+          GroundBtl(Ground)
+        </button>
       </span>
     </div>
   );
