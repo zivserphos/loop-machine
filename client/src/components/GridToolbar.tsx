@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStepBackward,
@@ -6,23 +7,39 @@ import {
   faPlay,
   faStepForward,
   faFastForward,
+  faPause,
 } from "@fortawesome/free-solid-svg-icons";
 import "./gridtoolbar.scss";
+import durationDisplay from "../utils/durationDisplay";
 
 const GridToolBar = function () {
   const [seconds, setSeconds] = useState<number>(0);
-  const [timer, setTimer] = useState<number>(0);
-  // const [timeInSec, setTimeInSec] = useState<number>(0);
+  // const [displayTime, setDisplayTime] = useState<string>("00:00");
+  const [isRunning, setIsRunning] = useState<boolean>(false);
+  const interval = useRef<NodeJS.Timeout | null>(null);
   const startSong = () => {
-    console.log(seconds);
+    if (!isRunning) {
+      setIsRunning(true);
+      interval.current = setInterval(() => {
+        setSeconds((prev) => prev + 1);
+      }, 1000);
+    }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const stopSong = () => {
+    clearInterval(interval.current!);
+    setIsRunning(false);
+  };
+
+  const resetSong = () => setSeconds(0);
+
+  const go10SecBack = () =>
+    seconds < 10 ? setSeconds(0) : setSeconds(seconds - 10);
+
+  const go10SecForward = () => setSeconds(seconds + 10);
+
+  const updateSeconds = ({ target }: { target: HTMLInputElement }) =>
+    setSeconds(Number(target.value));
 
   return (
     <div className="grid-tool-bar">
@@ -31,22 +48,27 @@ const GridToolBar = function () {
       </span>
       <span>
         <button type="button">
-          <FontAwesomeIcon icon={faFastBackward} />
+          <FontAwesomeIcon icon={faFastBackward} onClick={resetSong} />
         </button>
       </span>
       <span>
-        <button type="button">
+        <button type="button" onClick={go10SecBack}>
           <FontAwesomeIcon icon={faStepBackward} />
         </button>
       </span>
       <span>
-        <button type="button" onClick={() => startSong()}>
+        <button type="button" onClick={startSong}>
           <FontAwesomeIcon icon={faPlay} />
         </button>
       </span>
       <span>
+        <button type="button" onClick={stopSong}>
+          <FontAwesomeIcon icon={faPause} />
+        </button>
+      </span>
+      <span>
         <button type="button">
-          <FontAwesomeIcon icon={faStepForward} />
+          <FontAwesomeIcon icon={faStepForward} onClick={go10SecForward} />
         </button>
       </span>
       <span>
@@ -62,7 +84,13 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <input type="number" min={0} key={seconds} defaultValue={seconds} />
+        <input
+          type="number"
+          min={0}
+          key={seconds}
+          defaultValue={seconds}
+          onChange={updateSeconds}
+        />
       </span>
       <span>
         <button type="button">Local</button>
