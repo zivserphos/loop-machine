@@ -1,6 +1,6 @@
 const colors = [
   "grey",
-  "blue",
+  "green",
   "purple",
   "brown",
   "pink",

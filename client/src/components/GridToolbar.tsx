@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStepBackward,
@@ -10,10 +10,24 @@ import {
 import "./gridtoolbar.scss";
 
 const GridToolBar = function () {
+  const [seconds, setSeconds] = useState<number>(0);
+  const [timer, setTimer] = useState<number>(0);
+  // const [timeInSec, setTimeInSec] = useState<number>(0);
+  const startSong = () => {
+    console.log(seconds);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prev) => prev + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="grid-tool-bar">
       <span>
-        <button type="button">priview</button>
+        <button type="button">preview</button>
       </span>
       <span>
         <button type="button">
@@ -26,7 +40,7 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <button type="button">
+        <button type="button" onClick={() => startSong()}>
           <FontAwesomeIcon icon={faPlay} />
         </button>
       </span>
@@ -48,7 +62,7 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <input type="number" min={0} />
+        <input type="number" min={0} key={seconds} defaultValue={seconds} />
       </span>
       <span>
         <button type="button">Local</button>
