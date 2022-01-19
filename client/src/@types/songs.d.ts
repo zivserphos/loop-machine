@@ -3,4 +3,5 @@ declare interface Song {
   name: string;
   band: string;
   color: string;
+  image: string;
 }

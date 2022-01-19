@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStepBackward,
@@ -10,7 +10,7 @@ import {
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
 import "./gridtoolbar.scss";
-import durationDisplay from "../utils/durationDisplay";
+// import durationDisplay from "../utils/durationDisplay";
 
 const GridToolBar = function () {
   const [seconds, setSeconds] = useState<number>(0);
