@@ -2,7 +2,6 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import GridToolBar from "./components/GridToolbar";
 import Cube from "./components/Cube";
-// import colors from "./utils/colors";
 import songs from "./utils/songs";
 
 const App = function () {
@@ -11,7 +10,7 @@ const App = function () {
       <GridToolBar />
       <span
         style={{
-          marginLeft: "52vw",
+          marginLeft: "63.8vw",
           borderLeft: "5px solid black",
           height: "102vh",
           position: "absolute",

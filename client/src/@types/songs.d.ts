@@ -5,3 +5,10 @@ declare interface Song {
   color: string;
   image: string;
 }
+
+declare interface SongState {
+  song: Song;
+  seconds: number;
+  cursorMarginLeft: number;
+  songIndex: number;
+}
