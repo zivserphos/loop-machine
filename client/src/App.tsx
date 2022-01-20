@@ -10,7 +10,7 @@ const App = function () {
       <GridToolBar />
       <span
         style={{
-          marginLeft: "63.8vw",
+          marginLeft: "88.8vw",
           borderLeft: "5px solid black",
           height: "102vh",
           position: "absolute",

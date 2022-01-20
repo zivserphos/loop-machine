@@ -12,3 +12,14 @@ declare interface SongState {
   cursorMarginLeft: number;
   songIndex: number;
 }
+
+declare interface SongAction {
+  type: "UPDATE_SONG" | "UPDATE_TIME" | "UPDATE_CURSOR" | "MUTE_SONG";
+  payload: {
+    songName?: string;
+    song?: Song;
+    seconds?: number;
+    cursorMarginLeft?: number;
+    mute?: boolean;
+  };
+}
