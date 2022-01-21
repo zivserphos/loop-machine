@@ -1,6 +1,8 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable default-param-last */
 import * as actionTypes from "./song-types";
 import { updateCursor, updateTime, updateSong } from "./song-actions";
+import songService from "./helpers/helpers";
 import songsDB from "../../utils/songs";
 
 const INITIAL_STATE: SongState = {
@@ -10,15 +12,22 @@ const INITIAL_STATE: SongState = {
   cursorMarginLeft: 0,
 };
 
-const songReducer = (state = INITIAL_STATE, action: SongAction) => {
+const songReducer = (state = INITIAL_STATE, action: SongAction): SongState => {
   switch (action.type) {
     case actionTypes.UPDATE_SONG:
-      break;
+      const { song } = action.payload;
+      if (!song) return state;
+      return songService.updateSong(song, state);
+
     case actionTypes.UPDATE_TIME:
-      break;
+      const { seconds } = action.payload;
+      if (!seconds) return state;
+      return songService.updateTime(seconds, state);
     case actionTypes.UPDATE_CURSOR:
-      break;
+      const { updatedCursor } = action.payload;
+      if (!updatedCursor) return state;
+      return songService.updateCursor(updatedCursor, state);
     default:
-      break;
+      return state;
   }
 };

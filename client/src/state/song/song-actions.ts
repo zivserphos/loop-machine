@@ -14,9 +14,9 @@ export const updateTime = (seconds: number) => ({
   },
 });
 
-export const updateCursor = (cursourMarginLeft: number) => ({
+export const updateCursor = (updatedCursor: number) => ({
   type: songTypes.UPDATE_CURSOR,
   payload: {
-    cursourMarginLeft,
+    updatedCursor,
   },
 });

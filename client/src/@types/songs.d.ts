@@ -19,7 +19,7 @@ declare interface SongAction {
     songName?: string;
     song?: Song;
     seconds?: number;
-    cursorMarginLeft?: number;
+    updatedCursor?: number;
     mute?: boolean;
   };
 }
