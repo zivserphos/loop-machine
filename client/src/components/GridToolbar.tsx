@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,8 +35,8 @@ const GridToolBar = function () {
     dispatch(updateTime(timer));
     if (timer >= 480) {
       setTimer(0);
-      dispatch(updateTime(timer));
-      if (!loop) clearInterval(interval.current!);
+      dispatch(updateTime(0));
+      if (!loop) stopSong();
     }
   }, [dispatch, loop, timer]);
 
