@@ -1,0 +1,36 @@
+.cube {
+
+    width: 150vw;
+    border-left: 10px solid green;
+    height: 10vh;
+    margin: 1rem;
+    .col1 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 100%;
+        background-color: gainsboro;
+        .songImg {
+            height: 100%
+        }
+    }
+    .col2 {
+        border-right: 5px solid black;
+        background-color: darkgray;
+    }
+    .microphone {
+        height: 100%;
+    }
+    .cubelogo {
+        // height: 100%;
+        color: cadetblue
+    }
+    .cubeName {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+    .channel-chunk {
+        border-right: 3px solid black;
+    }
+}

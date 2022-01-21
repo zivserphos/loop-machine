@@ -1,7 +1,6 @@
-import { createStore } from "@reduxjs/toolkit";
-import { composeWithDevTools } from "redux-devtools-extension";
-import rootReducer from "./rootReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import songReducer from "./song/song-reducer";
 
-export const store = createStore(rootReducer, composeWithDevTools());
+const store = configureStore({ reducer: songReducer });
 
 export default store;

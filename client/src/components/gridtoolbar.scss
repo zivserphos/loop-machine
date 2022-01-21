@@ -1,0 +1,19 @@
+.grid-tool-bar {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row;
+    background-color: gainsboro;
+    margin-bottom: 1rem;
+    
+    button {
+        height: 10vh;
+        width: 6vw;
+        background-color: gainsboro;
+        cursor: pointer;
+    }
+    input {
+        height: 10vh;
+        background-color: gainsboro;
+        width: 6vw;
+    }
+}
