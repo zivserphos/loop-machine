@@ -8,7 +8,7 @@ export const updateSong = (song: Song) => ({
 });
 
 export const updateTime = (seconds: number) => ({
-  type: songTypes.UPDATE_SONG,
+  type: songTypes.UPDATE_TIME,
   payload: {
     seconds,
   },

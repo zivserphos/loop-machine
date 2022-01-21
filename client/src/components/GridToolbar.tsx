@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faStepBackward,
@@ -9,38 +9,43 @@ import {
   faFastForward,
   faPause,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
 import "./gridtoolbar.scss";
 import durationDisplay from "../utils/durationDisplay";
+import { updateTime } from "../state/song/song-actions";
+
+updateTime(10);
 // import durationDisplay from "../utils/durationDisplay";
 
 const GridToolBar = function () {
-  const [seconds, setSeconds] = useState<number>(0);
-  // const [displayTime, setDisplayTime] = useState<string>("00:00");
+  const dispatch = useDispatch();
+  const { seconds } = useSelector((state: SongState) => state);
+  const [timer, setTimer] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const interval = useRef<NodeJS.Timeout | null>(null);
   const startSong = () => {
     if (!isRunning) {
       setIsRunning(true);
       interval.current = setInterval(() => {
-        setSeconds((prev) => prev + 1);
+        setTimer((prev) => prev + 1);
       }, 1000);
     }
   };
+
+  useEffect(() => {
+    dispatch(updateTime(timer));
+  }, [dispatch, timer]);
 
   const stopSong = () => {
     clearInterval(interval.current!);
     setIsRunning(false);
   };
 
-  const resetSong = () => setSeconds(0);
+  const resetSong = () => setTimer(0);
 
-  const go10SecBack = () =>
-    seconds < 10 ? setSeconds(0) : setSeconds(seconds - 10);
+  const go10SecBack = () => (seconds < 10 ? setTimer(0) : setTimer(timer - 10));
 
-  const go10SecForward = () => setSeconds(seconds + 10);
-
-  const updateSeconds = ({ target }: { target: HTMLInputElement }) =>
-    setSeconds(Number(target.value));
+  const go10SecForward = () => setTimer(seconds + 10);
 
   return (
     <div className="grid-tool-bar">
@@ -48,8 +53,8 @@ const GridToolBar = function () {
         <button type="button">preview</button>
       </span>
       <span>
-        <button type="button">
-          <FontAwesomeIcon icon={faFastBackward} onClick={resetSong} />
+        <button type="button" onClick={resetSong}>
+          <FontAwesomeIcon icon={faFastBackward} />
         </button>
       </span>
       <span>
@@ -68,8 +73,8 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <button type="button">
-          <FontAwesomeIcon icon={faStepForward} onClick={go10SecForward} />
+        <button type="button" onClick={go10SecForward}>
+          <FontAwesomeIcon icon={faStepForward} />
         </button>
       </span>
       <span>
@@ -85,15 +90,7 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <div
-          // type="number"
-          // min={0}
-          key={seconds}
-          // defaultValue={seconds}
-          // onChange={updateSeconds}
-        >
-          {durationDisplay(seconds)}
-        </div>
+        <div>{durationDisplay(timer)}</div>
       </span>
 
       <span>
@@ -106,3 +103,6 @@ const GridToolBar = function () {
 };
 
 export default GridToolBar;
+
+// const updateSeconds = ({ target }: { target: HTMLInputElement }) =>
+//   setSeconds(Number(target.value));

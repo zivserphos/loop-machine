@@ -1,18 +1,20 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import GridToolBar from "./components/GridToolbar";
 import Cube from "./components/Cube";
 import songs from "./utils/songs";
 
 const App = function () {
+  const state = useSelector((songState: SongState) => songState);
   return (
     <div>
       <GridToolBar />
       <span
         style={{
-          marginLeft: "51.2vw",
+          marginLeft: `${state.cursorMarginLeft}vw`,
           borderLeft: "5px solid black",
-          height: "102vh",
+          height: "100vh",
           position: "absolute",
         }}
       />

@@ -1,7 +1,6 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-param-last */
 import * as actionTypes from "./song-types";
-import { updateCursor, updateTime, updateSong } from "./song-actions";
 import songService from "./helpers/helpers";
 import songsDB from "../../utils/songs";
 
@@ -9,7 +8,7 @@ const INITIAL_STATE: SongState = {
   song: songsDB[0],
   songIndex: 0,
   seconds: 0,
-  cursorMarginLeft: 0,
+  cursorMarginLeft: 51.2,
 };
 
 const songReducer = (state = INITIAL_STATE, action: SongAction): SongState => {
@@ -31,3 +30,4 @@ const songReducer = (state = INITIAL_STATE, action: SongAction): SongState => {
       return state;
   }
 };
+export default songReducer;
