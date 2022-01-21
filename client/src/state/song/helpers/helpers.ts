@@ -17,4 +17,10 @@ const updateCursor = (updatedCursor: number, state: SongState): SongState => {
   return { ...state, seconds, cursorMarginLeft: updatedCursor };
 };
 
-export default { updateCursor, updateTime, updateSong };
+const updateLoop = (state: SongState): SongState => ({
+  ...state,
+  loop: !state.loop,
+  cursorMarginLeft: 51.7,
+});
+
+export default { updateCursor, updateTime, updateSong, updateLoop };

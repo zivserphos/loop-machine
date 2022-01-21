@@ -20,3 +20,8 @@ export const updateCursor = (updatedCursor: number) => ({
     updatedCursor,
   },
 });
+
+export const updateLoop = () => ({
+  type: songTypes.UPDATE_LOOP,
+  payload: {},
+});

@@ -12,15 +12,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import "./gridtoolbar.scss";
 import durationDisplay from "../utils/durationDisplay";
-import { updateTime } from "../state/song/song-actions";
-
-updateTime(10);
-// import durationDisplay from "../utils/durationDisplay";
+import { updateLoop, updateTime } from "../state/song/song-actions";
 
 const GridToolBar = function () {
   const dispatch = useDispatch();
-  const { seconds } = useSelector((state: SongState) => state);
+  const { seconds, loop } = useSelector((state: SongState) => state);
   const [timer, setTimer] = useState<number>(0);
+  const [loopBackground, setLoopBackground] = useState<string>("");
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const interval = useRef<NodeJS.Timeout | null>(null);
   const startSong = () => {
@@ -34,7 +32,12 @@ const GridToolBar = function () {
 
   useEffect(() => {
     dispatch(updateTime(timer));
-  }, [dispatch, timer]);
+    if (timer >= 480) {
+      setTimer(0);
+      dispatch(updateTime(timer));
+      if (!loop) clearInterval(interval.current!);
+    }
+  }, [dispatch, loop, timer]);
 
   const stopSong = () => {
     clearInterval(interval.current!);
@@ -46,6 +49,11 @@ const GridToolBar = function () {
   const go10SecBack = () => (seconds < 10 ? setTimer(0) : setTimer(timer - 10));
 
   const go10SecForward = () => setTimer(seconds + 10);
+
+  const changeLoop = () => {
+    setLoopBackground(!loopBackground ? "green" : "");
+    dispatch(updateLoop());
+  };
 
   return (
     <div className="grid-tool-bar">
@@ -83,10 +91,13 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <button type="button">
-          <b>| </b>
+        <button
+          type="button"
+          onClick={changeLoop}
+          style={{ backgroundColor: loopBackground }}
+        >
+          <b>LOOP </b>
           <FontAwesomeIcon icon={faPlay} />
-          <b> |</b>
         </button>
       </span>
       <span>
@@ -103,6 +114,3 @@ const GridToolBar = function () {
 };
 
 export default GridToolBar;
-
-// const updateSeconds = ({ target }: { target: HTMLInputElement }) =>
-//   setSeconds(Number(target.value));

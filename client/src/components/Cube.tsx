@@ -7,12 +7,6 @@ import ChannelChunk from "./Channel-Chunk";
 import durationDisplay from "../utils/durationDisplay";
 
 const Cube = function ({ song }: { song: Song }) {
-  const arr = [...Array(8)].map((_, i) => i);
-  console.log(
-    [...Array(Math.ceil(song.duration / 100))].map((_, i) => (
-      <ChannelChunk index={i} />
-    ))
-  );
   return (
     <Row
       className="justify-content-md-center cube"

@@ -9,6 +9,7 @@ const INITIAL_STATE: SongState = {
   songIndex: 0,
   seconds: 0,
   cursorMarginLeft: 51.7,
+  loop: false,
 };
 
 const songReducer = (state = INITIAL_STATE, action: SongAction): SongState => {
@@ -26,6 +27,8 @@ const songReducer = (state = INITIAL_STATE, action: SongAction): SongState => {
       const { updatedCursor } = action.payload;
       if (!updatedCursor) return state;
       return songService.updateCursor(updatedCursor, state);
+    case actionTypes.UPDATE_LOOP:
+      return songService.updateLoop(state);
     default:
       return state;
   }

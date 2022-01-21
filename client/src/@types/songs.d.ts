@@ -11,10 +11,16 @@ declare interface SongState {
   seconds: number;
   cursorMarginLeft: number;
   songIndex: number;
+  loop?: boolean;
 }
 
 declare interface SongAction {
-  type: "UPDATE_SONG" | "UPDATE_TIME" | "UPDATE_CURSOR" | "MUTE_SONG";
+  type:
+    | "UPDATE_SONG"
+    | "UPDATE_TIME"
+    | "UPDATE_CURSOR"
+    | "MUTE_SONG"
+    | "UPDATE_LOOP";
   payload: {
     songName?: string;
     song?: Song;
