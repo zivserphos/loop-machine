@@ -8,6 +8,11 @@ import durationDisplay from "../utils/durationDisplay";
 
 const Cube = function ({ song }: { song: Song }) {
   const arr = [...Array(8)].map((_, i) => i);
+  console.log(
+    [...Array(Math.ceil(song.duration / 100))].map((_, i) => (
+      <ChannelChunk index={i} />
+    ))
+  );
   return (
     <Row
       className="justify-content-md-center cube"
@@ -23,9 +28,10 @@ const Cube = function ({ song }: { song: Song }) {
       <Col xs={2} sm={2} md={2} lg={2} className="col2">
         {`${song.band},   duration:  ${durationDisplay(song.duration)}`}
       </Col>
-      {arr.map((number) => (
-        <ChannelChunk index={number} />
+      {[...Array(Math.ceil(song.duration / 60))].map((_, i) => (
+        <ChannelChunk index={i} />
       ))}
+      <ChannelChunk index={3} leftSpace />
     </Row>
   );
 };
