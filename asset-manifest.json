@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/loop-machine/static/css/main.8814aed6.chunk.css",
+    "main.js": "/loop-machine/static/js/main.c7bc4a70.chunk.js",
+    "main.js.map": "/loop-machine/static/js/main.c7bc4a70.chunk.js.map",
+    "runtime-main.js": "/loop-machine/static/js/runtime-main.23938e48.js",
+    "runtime-main.js.map": "/loop-machine/static/js/runtime-main.23938e48.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/loop-machine/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.3c426a14.chunk.js": "/loop-machine/static/js/2.3c426a14.chunk.js",
+    "static/js/2.3c426a14.chunk.js.map": "/loop-machine/static/js/2.3c426a14.chunk.js.map",
+    "index.html": "/loop-machine/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/loop-machine/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.8814aed6.chunk.css.map": "/loop-machine/static/css/main.8814aed6.chunk.css.map",
+    "static/js/2.3c426a14.chunk.js.LICENSE.txt": "/loop-machine/static/js/2.3c426a14.chunk.js.LICENSE.txt",
+    "static/media/anthem.b0bb14ff.png": "/loop-machine/static/media/anthem.b0bb14ff.png",
+    "static/media/big-in-japan.3c674bd7.png": "/loop-machine/static/media/big-in-japan.3c674bd7.png",
+    "static/media/live-is-life.7e1a33c1.png": "/loop-machine/static/media/live-is-life.7e1a33c1.png",
+    "static/media/seeds-of-freedom.386fdce4.png": "/loop-machine/static/media/seeds-of-freedom.386fdce4.png",
+    "static/media/soul-storm.d45131fa.png": "/loop-machine/static/media/soul-storm.d45131fa.png",
+    "static/media/summer-of-69.89086ba1.png": "/loop-machine/static/media/summer-of-69.89086ba1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.23938e48.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.3c426a14.chunk.js",
+    "static/css/main.8814aed6.chunk.css",
+    "static/js/main.c7bc4a70.chunk.js"
+  ]
+}
