@@ -8,7 +8,7 @@ const INITIAL_STATE: SongState = {
   song: songsDB[0],
   songIndex: 0,
   seconds: 0,
-  cursorMarginLeft: 51.2,
+  cursorMarginLeft: 51.7,
 };
 
 const songReducer = (state = INITIAL_STATE, action: SongAction): SongState => {
