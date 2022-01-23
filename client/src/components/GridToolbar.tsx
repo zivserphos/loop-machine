@@ -72,12 +72,20 @@ const GridToolBar = function () {
         </button>
       </span>
       <span>
-        <button type="button" onClick={startSong}>
+        <button
+          type="button"
+          onClick={startSong}
+          style={{ backgroundColor: isRunning ? "green" : "" }}
+        >
           <FontAwesomeIcon icon={faPlay} />
         </button>
       </span>
       <span>
-        <button type="button" onClick={stopSong}>
+        <button
+          type="button"
+          onClick={stopSong}
+          style={{ backgroundColor: isRunning ? "" : "red" }}
+        >
           <FontAwesomeIcon icon={faPause} />
         </button>
       </span>
