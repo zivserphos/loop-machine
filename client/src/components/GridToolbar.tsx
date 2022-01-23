@@ -109,8 +109,8 @@ const GridToolBar = function () {
           <FontAwesomeIcon icon={faPlay} />
         </button>
       </span>
-      <span>
-        <div>{durationDisplay(timer)}</div>
+      <span className="clock-area">
+        <div className="clock">{durationDisplay(timer)}</div>
       </span>
 
       <span>
